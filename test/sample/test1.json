@@ -1,0 +1,1 @@
+{"type":"blueprint","template":{"name":"default","params":{"param1":"value1","param2":"value2"}},"children":[{"type":"text-field","disabled":false,"readonly":false,"required":false},{"type":"text-field","disabled":false,"readonly":false,"required":false}]}
