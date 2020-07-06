@@ -1,7 +1,8 @@
 import { Blueprint } from './models/elements/blueprint';
 import { Template } from './models/elements/template';
 
-export type Model = typeof Blueprint | typeof Template;
+// @ts-ignore
+export type Model = Blueprint | typeof Template;
 
 export type Constructor = (type: string) => Model;
 
@@ -52,7 +53,7 @@ export class Parse {
         }
 
         data.forEach((child) => {
-
+            children.push(this.child(child));
         });
 
         return children;
@@ -65,12 +66,10 @@ export class Parse {
      */
     private static child (data: any): Model {
         if (
-            !(
-                typeof data === 'object' &&
-                'type' in data &&
-                typeof data.type === 'string' &&
-                typeof this.constructors[data.type] !== 'undefined'
-            )
+            typeof data !== 'object' ||
+            !('type' in data) ||
+            typeof data.type !== 'string' ||
+            !this.constructors[data.type]
         ) {
             throw new Error('Parser error - unrecognized child.');
         }
