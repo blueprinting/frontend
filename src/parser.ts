@@ -28,16 +28,20 @@ export class Parse {
      *
      * @param data
      */
-    public static fromInput (data: any): Model[]|Model {
+    public static fromInput (data: any): Model[]|Model|null {
         if (typeof data === 'string') {
             data = JSON.parse(data);
+        }
+
+        if (Array.isArray(data)) {
+            return this.children(data);
         }
 
         if (typeof data === 'object') {
             return this.child(data);
         }
 
-        return this.children(data);
+        return null;
     }
 
     /**
@@ -45,12 +49,8 @@ export class Parse {
      *
      * @param data
      */
-    private static children (data: any): Model[] {
+    private static children (data: Array<any>): Model[] {
         const children: Model[] = [];
-
-        if (!Array.isArray(data)) {
-            throw new Error('Parser error - unrecognized children collection. Has to be an array.');
-        }
 
         data.forEach((child) => {
             children.push(this.child(child));
