@@ -19,7 +19,7 @@
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test",
+    "test:prod": "yarn lint && yarn test",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
