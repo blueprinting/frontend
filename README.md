@@ -1,6 +1,7 @@
 # Blueprinting - frontend
 [![codecov](https://codecov.io/gh/Blueprinting/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/Blueprinting/backend)
-![](https://github.com/Blueprinting/frontend/workflows/Test%20workflow/badge.svg?branch=master)
+![](https://github.com/Blueprinting/frontend/workflows/test/badge.svg?branch=master)
+
 Frontend base layer for blueprinting. This repository serves as a foundation for all framework specific implementations.
 
 ## Contribution
