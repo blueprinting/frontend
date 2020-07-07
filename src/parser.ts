@@ -1,8 +1,9 @@
 import { Blueprint } from './models/elements/blueprint';
 import { Template } from './models/elements/template';
+import { TextField } from './models/elements/textField';
 
 // @ts-ignore
-export type Model = Blueprint | Template;
+export type Model = Blueprint | Template | TextField;
 
 export type Constructor = (type: string) => Model;
 
