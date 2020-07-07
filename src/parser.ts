@@ -2,7 +2,7 @@ import { Blueprint } from './models/elements/blueprint';
 import { Template } from './models/elements/template';
 
 // @ts-ignore
-export type Model = Blueprint | typeof Template;
+export type Model = Blueprint | Template;
 
 export type Constructor = (type: string) => Model;
 
@@ -28,7 +28,7 @@ export class Parse {
      *
      * @param data
      */
-    public static fromInput (data: any): Model[]|Model|null {
+    public static fromInput (data: any): Model[]|null {
         if (typeof data === 'string') {
             data = JSON.parse(data);
         }
@@ -38,7 +38,7 @@ export class Parse {
         }
 
         if (typeof data === 'object') {
-            return this.child(data);
+            return [this.child(data)];
         }
 
         return null;

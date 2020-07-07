@@ -1,10 +1,14 @@
 import { Parse } from '../../parser';
 import { WithChildren } from '../../traits/WithChildren';
-import { trait } from '../../utilities';
 import { Template } from './template';
+import { use } from 'typescript-mix';
 
-export const Blueprint = trait(WithChildren)(class {
-});
+export interface Blueprint extends WithChildren {
+}
+
+export class Blueprint {
+    @use(WithChildren) this: any;
+}
 
 Parse.registerConstructor('blueprint', (data: any) => {
     const blueprint = new Blueprint();
