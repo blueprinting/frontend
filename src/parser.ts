@@ -28,20 +28,12 @@ export class Parse {
      *
      * @param data
      */
-    public static fromInput (data: any): Model[]|null {
+    public static fromInput (data: any): Model[] {
         if (typeof data === 'string') {
             data = JSON.parse(data);
         }
 
-        if (Array.isArray(data)) {
-            return this.children(data);
-        }
-
-        if (typeof data === 'object') {
-            return [this.child(data)];
-        }
-
-        return null;
+        return this.children(Array.isArray(data) ? data : [data]);
     }
 
     /**
