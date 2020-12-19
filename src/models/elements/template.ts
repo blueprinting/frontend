@@ -14,11 +14,11 @@ export class Template {
         }
     }
 
-    get name () {
+    get name (): string {
         return this._name;
     }
 
-    get params () {
+    get params (): TemplateParams | undefined {
         return this._params;
     }
 }
