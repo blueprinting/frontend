@@ -1,8 +1,10 @@
 import { Blueprint } from './models/elements/blueprint';
 import { Template } from './models/elements/template';
 import { TextField } from './models/elements/textField';
+import { Select } from './models/elements/select';
+import { OptionGroup } from './OptionGroup';
 
-export type Model = Blueprint | Template | TextField;
+export type Model = Blueprint | Template | TextField | Select;
 
 export type Constructor = (type: string) => Model;
 
@@ -123,4 +125,51 @@ Parse.registerConstructor('text-field', (data: any) => {
   }
 
   return textField;
+});
+
+Parse.registerConstructor('select', (data: any) => {
+  const select = new Select();
+
+  if (
+    'label' in data &&
+    typeof data.label === 'string'
+  ) {
+    select.label = data.label;
+  }
+
+  if (
+    'readonly' in data &&
+    typeof data.readonly === 'boolean'
+  ) {
+    select.readonly = data.readonly;
+  }
+
+  if (
+    'disabled' in data &&
+    typeof data.disabled === 'boolean'
+  ) {
+    select.disabled = data.disabled;
+  }
+
+  if (
+    'value' in data &&
+    typeof data.value === 'string'
+  ) {
+    select.value = data.value;
+  }
+
+  if (
+    'optionGroups' in data &&
+    Array.isArray(data.optionGroups)
+  ) {
+    select.optionGroups = data.optionGroups.map((group: any) => {
+      if (typeof group.options === 'undefined') {
+        return null;
+      }
+
+      return new OptionGroup(group.options, group.text);
+    }).filter((group: OptionGroup|null) => group !== null);
+  }
+
+  return select;
 });
