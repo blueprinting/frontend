@@ -1,4 +1,3 @@
-import { Parse } from '../../parser';
 import { use } from 'typescript-mix';
 import { HasLabel } from '../../traits/HasLabel';
 import { HasReadonly } from '../../traits/HasReadonly';
@@ -19,37 +18,3 @@ export class TextField {
         this._value = value;
     }
 }
-
-Parse.registerConstructor('text-field', (data: any) => {
-    const textField = new TextField();
-
-    if (
-        'label' in data &&
-        typeof data.label === 'string'
-    ) {
-        textField.label = data.label;
-    }
-
-    if (
-        'readonly' in data &&
-        typeof data.readonly === 'boolean'
-    ) {
-        textField.readonly = data.readonly;
-    }
-
-    if (
-        'disabled' in data &&
-        typeof data.disabled === 'boolean'
-    ) {
-        textField.disabled = data.disabled;
-    }
-
-    if (
-        'value' in data &&
-        typeof data.value === 'string'
-    ) {
-        textField.value = data.value;
-    }
-
-    return textField;
-});
