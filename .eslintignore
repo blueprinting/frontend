@@ -8,3 +8,4 @@ docs
 .eslintrc.js
 
 rollup.config.ts
+test
