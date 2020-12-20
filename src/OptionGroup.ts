@@ -18,12 +18,12 @@ export class OptionGroup {
     this._options = options;
   }
 
-  set text (text: string | undefined) {
-    this._text = text;
-  }
-
   get options(): Options | undefined {
     return this._options;
+  }
+
+  set text (text: string | undefined) {
+    this._text = text;
   }
 
   get text(): string | undefined {
