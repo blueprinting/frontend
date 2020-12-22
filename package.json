@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@blueprinting/frontend",
   "version": "0.0.1",
   "description": "Frontend base layer for blueprinting. This repository serves as a foundation for all framework specific implementations.",
   "repository": "git@github.com:blueprinting/frontend.git",
